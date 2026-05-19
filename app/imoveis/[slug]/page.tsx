@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { SiteFooter } from "@/components/layout/site-footer";
-import { SiteNavbar } from "@/components/layout/site-navbar";
 import { PropertyDetailContent } from "@/sections/property/property-detail-content";
 import {
   getAllProperties,
@@ -61,7 +60,6 @@ export default async function PropertyDetailPage({
 
   return (
     <>
-      <SiteNavbar />
       <main>
         <PropertyDetailContent
           property={property}

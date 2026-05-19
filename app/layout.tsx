@@ -1,33 +1,27 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Nunito } from "next/font/google";
+import { AppProviders } from "@/components/providers/app-providers";
 import "./globals.css";
 
-const inter = Inter({
+const nunito = Nunito({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://loremprime.example.com"),
+  metadataBase: new URL("https://nrengenharia.example.com"),
   title: {
-    default: "Lorem Prime | Imoveis de Alto Padrao",
-    template: "%s | Lorem Prime",
+    default: "NR Engenharia | Imoveis em Campo Belo MG",
+    template: "%s | NR Engenharia",
   },
   description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt.",
+    "Portal de busca de imoveis com filtros completos, mapa e detalhes para Campo Belo em Minas Gerais.",
   openGraph: {
-    title: "Lorem Prime",
+    title: "NR Engenharia",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt.",
+      "Busca de imoveis em Campo Belo MG com experiencia de listagem no estilo grandes corretoras.",
     type: "website",
     locale: "pt_BR",
   },
@@ -39,8 +33,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} ${playfair.variable}`}>
-      <body>{children}</body>
+    <html lang="pt-BR" className={nunito.variable}>
+      <body>
+        <AppProviders>{children}</AppProviders>
+      </body>
     </html>
   );
 }

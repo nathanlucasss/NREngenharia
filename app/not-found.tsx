@@ -1,13 +1,11 @@
 import Link from "next/link";
 
 import { SiteFooter } from "@/components/layout/site-footer";
-import { SiteNavbar } from "@/components/layout/site-navbar";
 
 export default function NotFound() {
   return (
     <>
-      <SiteNavbar />
-      <main className="section-block section-light section-top-offset">
+      <main className="section-block section-light">
         <div className="site-container">
           <p className="section-eyebrow">404</p>
           <h1 className="section-heading">Lorem ipsum dolor sit amet, pagina nao encontrada.</h1>

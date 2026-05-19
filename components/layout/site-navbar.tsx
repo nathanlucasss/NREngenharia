@@ -2,54 +2,55 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useState } from "react";
-
 import { useScrolled } from "@/hooks/use-scrolled";
 
-interface SiteNavbarProps {
-  transparentOnTop?: boolean;
-}
-
-const navLinks = [
-  { href: "/", label: "Inicio" },
-  { href: "/imoveis", label: "Imoveis" },
-  { href: "/#contato", label: "Contato" },
+const menuLinks = [
+  { href: "/imoveis", label: "Comprar" },
+  { href: "/imoveis", label: "Atendimento" },
+  { href: "/imoveis", label: "Lancamentos" },
+  { href: "/imoveis", label: "Imoveis de Luxo" },
+  { href: "/imoveis", label: "Corretores" },
+  { href: "/imoveis", label: "Ajuda" },
 ];
 
-export function SiteNavbar({ transparentOnTop = false }: SiteNavbarProps) {
-  const pathname = usePathname();
-  const scrolled = useScrolled(24);
+export function SiteNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const isHome = pathname === "/";
-  const isTransparent = transparentOnTop && isHome && !scrolled && !isMenuOpen;
+  const scrolled = useScrolled(20);
 
   return (
-    <header className={isTransparent ? "site-header transparent" : "site-header solid"}>
-      <div className="site-container site-header-inner">
-        <Link href="/" className="brand-mark" aria-label="Voltar para pagina inicial">
-          Lorem Prime
+    <header className={scrolled ? "lux-header scrolled" : "lux-header"}>
+      <div className="site-container lux-header-inner">
+        <Link href="/" className="lux-brand" aria-label="Voltar para pagina inicial">
+          NR Engenharia
         </Link>
 
-        <nav className="desktop-nav" aria-label="Navegacao principal">
-          {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="nav-link">
+        <nav className="lux-nav" aria-label="Navegacao principal">
+          {menuLinks.map((link) => (
+            <Link key={link.label} href={link.href} className="lux-nav-link">
               {link.label}
             </Link>
           ))}
         </nav>
 
-        <Link href="/imoveis" className="cta-button desktop-cta">
-          Ver Imoveis
-        </Link>
+        <div className="lux-actions">
+          <button type="button" className="lux-button ghost">
+            Entrar
+          </button>
+          <button type="button" className="lux-button ghost">
+            Criar conta
+          </button>
+          <button type="button" className="lux-button primary">
+            Anunciar imovel
+          </button>
+        </div>
 
         <button
           type="button"
-          className={isMenuOpen ? "menu-button active" : "menu-button"}
+          className={isMenuOpen ? "lux-menu-button active" : "lux-menu-button"}
           onClick={() => setIsMenuOpen((prev) => !prev)}
           aria-expanded={isMenuOpen}
-          aria-controls="mobile-menu"
+          aria-controls="lux-mobile-menu"
           aria-label="Abrir menu"
         >
           <span />
@@ -60,22 +61,28 @@ export function SiteNavbar({ transparentOnTop = false }: SiteNavbarProps) {
       <AnimatePresence>
         {isMenuOpen ? (
           <motion.div
-            id="mobile-menu"
-            className="mobile-menu"
+            id="lux-mobile-menu"
+            className="lux-mobile-menu"
             initial={{ opacity: 0, y: -16 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="site-container mobile-menu-inner">
-              {navLinks.map((link) => (
-                <Link key={link.href} href={link.href} className="mobile-link">
+            <div className="site-container lux-mobile-menu-inner">
+              {menuLinks.map((link) => (
+                <Link key={link.label} href={link.href} className="lux-mobile-link">
                   {link.label}
                 </Link>
               ))}
-              <Link href="/imoveis" className="cta-button">
-                Ver Imoveis
-              </Link>
+              <button type="button" className="lux-button ghost">
+                Entrar
+              </button>
+              <button type="button" className="lux-button ghost">
+                Criar conta
+              </button>
+              <button type="button" className="lux-button primary">
+                Anunciar imovel
+              </button>
             </div>
           </motion.div>
         ) : null}

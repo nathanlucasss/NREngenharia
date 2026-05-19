@@ -17,6 +17,14 @@ export function getCities(): string[] {
   return Array.from(new Set(properties.map((property) => property.address.city))).sort();
 }
 
+export function getNeighborhoods(city?: string): string[] {
+  const source = city
+    ? properties.filter((property) => property.address.city === city)
+    : properties;
+
+  return Array.from(new Set(source.map((property) => property.address.neighborhood))).sort();
+}
+
 export function getSimilarProperties(property: Property, limit = 3): Property[] {
   return property.similarSlugs
     .map((slug) => getPropertyBySlug(slug))
