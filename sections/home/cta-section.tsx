@@ -1,34 +1,29 @@
 import Link from "next/link";
 
-import { FadeIn } from "@/components/ui/fade-in";
-
 export function CtaSection() {
   return (
-    <section className="section-block section-cta">
-      <div className="site-container">
-        <FadeIn className="cta-panel">
-          <p className="section-eyebrow">Atendimento Exclusivo</p>
-          <h2 className="section-heading">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </h2>
+    <section className="section-block cta-band">
+      <div className="site-container cta-band-inner">
+        <div>
+          <p className="section-eyebrow">Campo Belo</p>
+          <h2 className="section-heading">Quer ver uma dessas casas?</h2>
           <p className="section-description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.
+            Manda uma mensagem com o bairro ou o valor. A resposta vem com os imóveis que encaixam.
           </p>
-          <div className="hero-actions">
-            <a
-              className="cta-button"
-              href="https://wa.me/5511988887777?text=Lorem%20ipsum%20dolor%20sit%20amet"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Falar no WhatsApp
-            </a>
-            <Link href="/imoveis" className="ghost-button">
-              Ver catalogo
-            </Link>
-          </div>
-        </FadeIn>
+        </div>
+        <div className="closing-actions">
+          <a
+            className="cta-button"
+            href="https://wa.me/5535988887777?text=Ol%C3%A1%2C%20quero%20ver%20casas%20%C3%A0%20venda%20em%20Campo%20Belo."
+            target="_blank"
+            rel="noreferrer"
+          >
+            Chamar no WhatsApp
+          </a>
+          <Link href="/imoveis" className="ghost-button">
+            Ver imóveis
+          </Link>
+        </div>
       </div>
     </section>
   );

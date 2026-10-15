@@ -7,19 +7,19 @@ export default function NotFound() {
   return (
     <>
       <SiteNavbar />
-      <main className="section-block section-light section-top-offset">
-        <div className="site-container">
+      <main className="not-found">
+        <div className="site-container not-found-inner">
           <p className="section-eyebrow">404</p>
-          <h1 className="section-heading">Lorem ipsum dolor sit amet, pagina nao encontrada.</h1>
+          <h1 className="section-heading">Essa página não existe.</h1>
           <p className="section-description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.
+            Volte ao início ou veja as casas à venda em Campo Belo.
           </p>
-          <div className="hero-actions">
+          <div className="not-found-actions">
             <Link href="/" className="cta-button">
-              Voltar ao inicio
+              Voltar ao início
             </Link>
             <Link href="/imoveis" className="ghost-button">
-              Ver imoveis
+              Ver imóveis
             </Link>
           </div>
         </div>

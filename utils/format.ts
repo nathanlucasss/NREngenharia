@@ -9,5 +9,5 @@ export function formatPrice(value: number): string {
 }
 
 export function formatArea(value: number): string {
-  return `${value} m2`;
+  return `${value} m²`;
 }

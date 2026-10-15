@@ -1,16 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700", "800"],
@@ -19,15 +12,15 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL("https://loremprime.example.com"),
   title: {
-    default: "Lorem Prime | Imoveis de Alto Padrao",
+    default: "Lorem Prime | Casas à venda em Campo Belo",
     template: "%s | Lorem Prime",
   },
   description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt.",
+    "Corretora em Campo Belo, MG. Casas à venda na cidade, com visita marcada direto com quem anuncia.",
   openGraph: {
-    title: "Lorem Prime",
+    title: "Lorem Prime | Casas à venda em Campo Belo",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt.",
+      "Veja casas à venda em Campo Belo, MG, e fale com a corretora para agendar uma visita.",
     type: "website",
     locale: "pt_BR",
   },
@@ -39,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="pt-BR" className={jakarta.variable}>
       <body>{children}</body>
     </html>
   );

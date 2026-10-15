@@ -26,8 +26,8 @@ export async function generateMetadata({
 
   if (!property) {
     return {
-      title: "Imovel nao encontrado",
-      description: "Lorem ipsum dolor sit amet.",
+      title: "Imóvel não encontrado",
+      description: "Essa casa não está no site da Lorem Prime.",
     };
   }
 

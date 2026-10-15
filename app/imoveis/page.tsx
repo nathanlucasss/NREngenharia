@@ -3,23 +3,32 @@ import type { Metadata } from "next";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteNavbar } from "@/components/layout/site-navbar";
 import { PropertiesCatalog } from "@/sections/listings/properties-catalog";
-import { getAllProperties, getCities } from "@/utils/properties";
+import { getAllProperties, getNeighborhoods } from "@/utils/properties";
 
 export const metadata: Metadata = {
-  title: "Catalogo de Imoveis",
-  description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.",
+  title: "Casas à venda",
+  description: "Casas à venda em Campo Belo, MG. Filtre por bairro, valor ou número de quartos.",
 };
 
-export default function PropertiesPage() {
+interface PropertiesPageProps {
+  searchParams: Promise<{ q?: string | string[] }>;
+}
+
+export default async function PropertiesPage({ searchParams }: PropertiesPageProps) {
+  const params = await searchParams;
+  const queryParam = Array.isArray(params.q) ? params.q[0] : params.q;
   const properties = getAllProperties();
-  const cities = getCities();
+  const neighborhoods = getNeighborhoods();
 
   return (
     <>
       <SiteNavbar />
       <main>
-        <PropertiesCatalog properties={properties} cities={cities} />
+        <PropertiesCatalog
+          properties={properties}
+          neighborhoods={neighborhoods}
+          initialQuery={queryParam ?? ""}
+        />
       </main>
       <SiteFooter />
     </>

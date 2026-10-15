@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { PropertyCard } from "@/components/ui/property-card";
 import { SectionTitle } from "@/components/ui/section-title";
 import { Property } from "@/types/property";
@@ -8,14 +10,18 @@ interface FeaturedSectionProps {
 
 export function FeaturedSection({ properties }: FeaturedSectionProps) {
   return (
-    <section id="destaques" className="section-block section-light">
+    <section id="destaques" className="section-block">
       <div className="site-container">
-        <SectionTitle
-          eyebrow="Colecao Curada"
-          title="Lorem ipsum dolor sit amet, elit premium collection"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          center
-        />
+        <div className="section-heading-row">
+          <SectionTitle
+            eyebrow="Destaques"
+            title="Casas à venda agora"
+            description="Anúncios em Campo Belo. O preço, o bairro e o tamanho estão no card."
+          />
+          <Link href="/imoveis" className="text-link">
+            Ver todas
+          </Link>
+        </div>
 
         <div className="property-grid">
           {properties.map((property, index) => (
